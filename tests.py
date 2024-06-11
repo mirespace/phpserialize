@@ -88,7 +88,7 @@ class PhpSerializeTestCase(unittest.TestCase):
         x = phpserialize.dumps(user, object_hook=dump_object_hook)
         y = phpserialize.loads(x, object_hook=load_object_hook,
                                decode_strings=True)
-        self.assertTrue(b'WP_User' in x)
+        self.assertIn(b'WP_User', x)
         self.assertEqual(type(y), type(user))
         self.assertEqual(y.username, user.username)
 
